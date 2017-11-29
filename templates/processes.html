@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | PROCESSI</title> {% endblock %}
+
+{% block content %}
+    <div class='row' id='table-container'>
+        <table id='result-table' class='table table-striped table-bordered'>
+            <thead>
+                <tr>
+                    <th class="align-middle">NOME</th>
+                    <th class="align-middle">REFERENTE</th>
+                    <th class="align-middle">EMAIL</th>
+                    <th class="align-middle">DATA INIZIO</th>
+                    <th class="align-middle">DATA FINE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in processes %}
+                    <tr>
+                        <td class="align-middle">{{ row.process.name }}</td>
+                        <td class="align-middle">{{ row.referent_name }} {{ row.referent_surname }}</td>
+                        <td class="align-middle">{{ row.referent_email }}</td>
+                        <td class="align-middle">{{ row.process.start_date }}</td>
+                        <td class="align-middle">{{ row.process.end_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

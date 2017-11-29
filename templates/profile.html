@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | PROFILO</title> {% endblock %}
+
+{% block content %}
+{% if not user.is_authenticated %}
+    <div class="row">
+        {% csrf_token %}
+        <h1>Non ti sei ancora loggato</h1>
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <p>
+        NOME: {{ user.first_name }}
+        <br>
+        COGNOME: {{ user.last_name }}
+        <br>
+        INDIRIZZO EMAIL: {{ user.email }}
+        <br>
+        USERNAME: {{ user.username }}
+    </p>
+    {% endif %}
+{% endblock %}

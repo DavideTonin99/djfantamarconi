@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | MODIDFICA PROFILO</title> {% endblock %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <h1>Non ti sei ancora loggato</h1>
+    </div>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class='justify-content-md-center col-sm-10 offset-sm-1'>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary col-sm-12" type="submit">MODIFICA</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("input").each( function(index, element) {
+            $(element).attr("class", "form-control");
+        });
+    });
+</script>
+{% endblock %}

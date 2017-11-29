@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | HOMEPAGE</title> {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class='col-sm-12 text-center'>
+            <a href="organogram.php"><button class="btn btn-danger col-sm-12">Organigramma</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-sm-12 text-center'>
+            <a href="{% url 'processes' %}"><button class="btn btn-warning col-sm-12">Processi</button></a>
+        </div>
+    </div>
+    <div <div class="row">
+        <div class='col-sm-12 text-center'>
+            <a href="timeline.php"><button class="btn btn-primary col-sm-12">Timeline</button></a>
+        </div>
+    </div>
+{% endblock %}
