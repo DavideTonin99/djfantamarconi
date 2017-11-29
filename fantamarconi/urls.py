@@ -2,7 +2,7 @@ from django.conf.urls import url
 from fantamarconi.views import home, ProcessesView, view_profile, edit_profile, register
 from django.contrib.auth.views import login, logout
 
-#app_name = 'fantamarconi'
+# app_name = 'fantamarconi'
 
 urlpatterns = [
     url(r'^$', home, name='home'),
