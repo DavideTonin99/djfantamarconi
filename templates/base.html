@@ -43,7 +43,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="account-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="account-dropdown">
-                            {% if user.is_superuser %}<a class="{% if request.path_info == '/register/' %} active {% endif %} dropdown-item" href="{% url 'register' %}">Registra</a>{% endif %}
+                            {% if user.is_superuser %}
+                                <a class="dropdown-item" href="/admin/">Admin</a>
+                                <a class="{% if request.path_info == '/register/' %} active {% endif %} dropdown-item" href="{% url 'register' %}">Registra</a>
+                                <div class="dropdown-divider"></div>
+                            {% endif %}
                             <a class="{% if request.path_info == '/profile/' %} active {% endif %} dropdown-item" href="{% url 'view-profile' %}">Profilo</a>
                             <a class="{% if request.path_info == '/profile/edit/' %} active {% endif %} dropdown-item" href="{% url 'edit-profile'%}">Modifica profilo</a>
                             <div class="dropdown-divider"></div>

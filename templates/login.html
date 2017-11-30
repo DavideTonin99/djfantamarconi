@@ -4,12 +4,36 @@
 
 {% block content %}
 <div class="row">
+    <h1 class="col-md-12 text-center">LOGIN</h1>
+</div>
+<div class="row">
     <div class='justify-content-md-center col-sm-6 offset-sm-3'>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class='col-sm-12 errorlist'>
+                {% if form.errors %}
+                    Username o password non corretti. Riprovare.
+                {% endif %}
+            </div>
             <br />
-            <button class="btn btn-primary col-sm-12" type="submit">LOGIN</button
+            <div class="col-sm-12">
+                {{ form.username.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Username</span>
+                    {{ form.username }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.password.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Password</span>
+                    {{ form.password }}
+                </div>
+            </div>
+            <br />
+
+            <button class="btn btn-primary col-sm-8" type="submit">LOGIN</button
         </form>
     </div>
 </div>

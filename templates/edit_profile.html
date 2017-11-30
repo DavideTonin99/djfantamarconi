@@ -18,7 +18,7 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="col-sm-12">
-                    {{ form.first_name.error }}
+                    {{ form.first_name.errors }}
                     <div class="input-group">
                         <span class="input-group-addon">Nome</span>
                         {{ form.first_name }}
@@ -26,7 +26,7 @@
                 </div>
                 <br />
                 <div class="col-sm-12">
-                    {{ form.last_name.error }}
+                    {{ form.last_name.errors }}
                     <div class="input-group">
                         <span class="input-group-addon">Cognome</span>
                         {{ form.last_name }}
@@ -34,7 +34,7 @@
                 </div>
                 <br />
                 <div class="col-sm-12">
-                    {{ form.email.error }}
+                    {{ form.email.errors }}
                     <div class="input-group">
                         <span class="input-group-addon">Email</span>
                         {{ form.email }}

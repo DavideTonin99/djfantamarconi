@@ -77,6 +77,13 @@ th {
     padding: 7px !important;
 }
 
+.errorlist {
+    padding: 0;
+    padding-top: 10px;
+    list-style: none;
+    color: red;
+}
+
 .google-visualization-orgchart-node {
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -92,6 +99,10 @@ a {color: orange}
 
 a > .btn {
     padding: 20px;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #json-export {
