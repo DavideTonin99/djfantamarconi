@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | TIMELINE</title> {% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/timeline.js' %}"></script>
+    <script>
+        var timeline_data;
+        var person_selected;
+
+        $(document).ready( function() {
+            var url_params = new URLSearchParams(window.location.search);
+            if (url_params.has('person')) {
+                person_selected = url_params.get('person');
+            }
+
+        	$.get("{% url 'get_timeline' %}",
+                {
+                    person: person_selected,
+                    dataType: "json"
+                }
+                ).done(function(data) {
+                    if (data.error !== undefined & data.error !== "") {
+                        alert('Error '+data.error);
+                    } else {
+                    	console.log(data);
+                        timeline_data = data.processes;
+                        //google.charts.load('current', {packages:["timeline"]});
+                        //google.charts.setOnLoadCallback(draw_timeline);
+                    }
+                })
+                .fail(function() {
+                    console.log("Failed");
+        	});
+        });
+    </script>
+{% endblock %}

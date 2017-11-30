@@ -3,11 +3,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from fantamarconi.forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.forms import UserChangeForm
+from django.http import JsonResponse
 
 from fantamarconi.models import Processes
 
 def home(request):
     return render(request, template_name='home.html')
+
+def timeline(request):
+    return render(request, template_name='timeline.html')
+
+def get_timeline(request):
+    return JsonResponse({'ciao':'ciao'})
 
 class ProcessesView(TemplateView):
 
