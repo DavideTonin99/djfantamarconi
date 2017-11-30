@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from fantamarconi.forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.forms import UserChangeForm
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 from fantamarconi.models import Processes
 
@@ -33,10 +36,12 @@ class ProcessesView(TemplateView):
                                 for process in processes]
         return context
 
+@login_required
 def view_profile(request):
     args = {'user':request.user}
     return render(request, 'profile.html', args)
 
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -48,13 +53,18 @@ def edit_profile(request):
         args = {'form':form}
         return render(request, 'edit_profile.html', args)
 
+@login_required
 def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('home'))
+
     else:
-        form = RegistrationForm()
-        args = {'form':form}
-        return render(request, 'register.html', args)
+        if request.method == 'POST':
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/')
+        else:
+            form = RegistrationForm()
+            args = {'form':form}
+            return render(request, 'register.html', args)
