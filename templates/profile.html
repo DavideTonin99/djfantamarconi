@@ -10,14 +10,30 @@
     </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <p>
-        NOME: {{ user.first_name }}
-        <br>
-        COGNOME: {{ user.last_name }}
-        <br>
-        INDIRIZZO EMAIL: {{ user.email }}
-        <br>
-        USERNAME: {{ user.username }}
-    </p>
+    <div class="row">
+        <h1 class="col-md-12 text-center">IL MIO PROFILO:</h1>
+    </div>
+    <div class="row">
+        <table class='table table-striped table-bordered'>
+            <tbody>
+                <tr>
+                    <td>NOME</td>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <td>COGNOME</td>
+                    <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td>USERNAME</td>
+                    <td>{{ user.username }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     {% endif %}
 {% endblock %}
