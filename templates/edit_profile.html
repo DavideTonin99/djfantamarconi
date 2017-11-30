@@ -11,11 +11,41 @@
 
     {% if user.is_authenticated %}
     <div class="row">
+        <h1 class="col-md-12 text-center">MODIFICA PROFILO</h1>
+    </div>
+    <div class="row">
         <div class='justify-content-md-center col-sm-10 offset-sm-1'>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button class="btn btn-primary col-sm-12" type="submit">MODIFICA</button>
+                <div class="col-sm-12">
+                    {{ form.first_name.error }}
+                    <div class="input-group">
+                        <span class="input-group-addon">Nome</span>
+                        {{ form.first_name }}
+                    </div>
+                </div>
+                <br />
+                <div class="col-sm-12">
+                    {{ form.last_name.error }}
+                    <div class="input-group">
+                        <span class="input-group-addon">Cognome</span>
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <br />
+                <div class="col-sm-12">
+                    {{ form.email.error }}
+                    <div class="input-group">
+                        <span class="input-group-addon">Email</span>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <br />
+                <div class="col-sm-12">
+                    Puoi modificare la password usando questo <a href='#'>form</a>.
+                </div>
+                <br />
+                <button class="btn btn-warning col-sm-8" type="submit">MODIFICA</button>
             </form>
         </div>
     </div>
