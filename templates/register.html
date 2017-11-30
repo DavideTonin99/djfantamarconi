@@ -8,18 +8,62 @@
         <form method="post">
             {% csrf_token %}
             <div class="col-sm-12">
-                {{ form.username.label_tag }}
                 {{ form.username.error }}
-                {{ form.username }}
+                <div class="input-group">
+                    <span class="input-group-addon">Username</span>
+                    {{ form.username }}
+                </div>
+                <div class="text-left">Massimo 150 caratteri. Lettere, numeri, @, +, -, _</div>
             </div>
-            <div class="col-sm-12">
-                {{ form.password1.label_tag }}
-                {{ form.password1.error }}
-                {{ form.password1 }}
-            </div>
-            {{ form.as_p }}
             <br />
-            <button class="btn btn-primary col-sm-12" type="submit">REGISTRA</button>
+            <div class="col-sm-12">
+                {{ form.first_name.error }}
+                <div class="input-group">
+                    <span class="input-group-addon">Nome</span>
+                    {{ form.first_name }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.last_name.error }}
+                <div class="input-group">
+                    <span class="input-group-addon">Cognome</span>
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.email.error }}
+                <div class="input-group">
+                    <span class="input-group-addon">Email</span>
+                    {{ form.email }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.password1.error }}
+                <div class="input-group">
+                    <span class="input-group-addon">Password</span>
+                    {{ form.password1 }}
+                </div>
+                <div class="text-left">
+                    La password non può essere troppo simile alle altre informazioni personali<br />
+                    La password deve contenere almeno 8 caratteri<br />
+                    La password può essere una password usata comunemente<br />
+                    La password non può essere composta soltanto da numeri<br />
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.password2.error }}
+                <div class="input-group">
+                    <span class="input-group-addon">Conferma password</span>
+                    {{ form.password2 }}
+                </div>
+                <div class="text-left">Conferma la password.</div>
+            </div>
+            <br />
+            <button class="btn btn-danger col-sm-8" type="submit">REGISTRA</button>
         </form>
     </div>
 </div>
