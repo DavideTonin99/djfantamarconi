@@ -18,7 +18,7 @@ function draw_timeline() {
     dataTable.addColumn({ type: 'date', id: 'Fine' });
 
     timeline = [];
-    $(timeline_data).each( function(index) {
+    $(Object.keys(timeline_data)).each( function(index) {
         current_process = timeline_data[index];
         if (person_selected !== undefined && person_selected!=="") {
             row = [current_process.referente,
