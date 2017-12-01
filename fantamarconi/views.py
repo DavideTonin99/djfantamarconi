@@ -48,6 +48,9 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             return redirect('view-profile')
+        else:
+            args = {'form':form}
+            return render(request, 'edit_profile.html', args)
     else:
         form = EditProfileForm(instance=request.user)
         args = {'form':form}
@@ -64,6 +67,9 @@ def register(request):
             if form.is_valid():
                 form.save()
                 return redirect('/')
+            else:
+                args = {'form':form}
+                return render(request, 'register.html', args)
         else:
             form = RegistrationForm()
             args = {'form':form}
