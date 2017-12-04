@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
-from fantamarconi.models import Processes
+from fantamarconi.models import Processes, Timeline
 
 def home(request):
     return render(request, template_name='home.html')
@@ -17,7 +17,22 @@ def timeline(request):
     return render(request, template_name='timeline.html')
 
 def get_timeline(request):
-    return JsonResponse({'ciao':'ciao'})
+    timeline = {}
+
+    processes = Timeline.objects.all()
+
+    id = 0
+    for record in processes:
+        timeline[id] = {
+                        'processo': record.process.name,
+                        'referente': record.referent.first_name +' '+ record.referent.last_name,
+                        'data_inizio': record.start_date,
+                        'data_fine': record.end_date,
+                        'compito': record.job
+                        }
+        id += 1
+
+    return JsonResponse(timeline)
 
 class ProcessesView(TemplateView):
 

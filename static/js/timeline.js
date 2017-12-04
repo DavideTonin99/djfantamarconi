@@ -1,5 +1,4 @@
 function draw_timeline() {
-    console.log(timeline_data);
     $('#content').append("<div id='timeline-div' style = 'height:400px'></div>");
     var container = document.getElementById('timeline-div');
 
@@ -23,13 +22,13 @@ function draw_timeline() {
         if (person_selected !== undefined && person_selected!=="") {
             row = [current_process.referente,
                 current_process.processo + ": "+current_process.compito,
-                new Date(current_process.data_inizio.substring(6,10),current_process.data_inizio.substring(3,5)-1,current_process.data_inizio.substring(0,2)),
-                new Date(current_process.data_fine.substring(6,10),current_process.data_fine.substring(3,5)-1,current_process.data_fine.substring(0,2))];
+                new Date(current_process.data_inizio.substring(0,4),current_process.data_inizio.substring(5,7)-1,current_process.data_inizio.substring(8,10)),
+                new Date(current_process.data_fine.substring(0,4),current_process.data_fine.substring(5,7)-1,current_process.data_fine.substring(8,10))];
         } else {
             row = [current_process.processo,
                 current_process.referente + ": "+current_process.compito,
-                new Date(current_process.data_inizio.substring(6,10),current_process.data_inizio.substring(3,5)-1,current_process.data_inizio.substring(0,2)),
-                new Date(current_process.data_fine.substring(6,10),current_process.data_fine.substring(3,5)-1,current_process.data_fine.substring(0,2))];
+                new Date(current_process.data_inizio.substring(0,4),current_process.data_inizio.substring(5,7)-1,current_process.data_inizio.substring(8,10)),
+                new Date(current_process.data_fine.substring(0,4),current_process.data_fine.substring(5,7)-1,current_process.data_fine.substring(8,10))];
             }
 
         timeline.push(row);

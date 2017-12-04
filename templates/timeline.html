@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block script %}
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{% static 'js/timeline.js' %}"></script>
     <script>
         var timeline_data;
@@ -28,9 +29,9 @@
                         alert('Error '+data.error);
                     } else {
                     	console.log(data);
-                        timeline_data = data.processes;
-                        //google.charts.load('current', {packages:["timeline"]});
-                        //google.charts.setOnLoadCallback(draw_timeline);
+                        timeline_data = data;
+                        google.charts.load('current', {packages:["timeline"]});
+                        google.charts.setOnLoadCallback(draw_timeline);
                     }
                 })
                 .fail(function() {
