@@ -19,18 +19,23 @@ def organogram(request):
 def get_organogram(request):
     organogram = {}
     objects = Organogram.objects.all()
-    index = 0
-    for obj in objects:
-        organogram[index] = {
-                        'id': index,
-                        'name': obj.name,
-                        'surname': obj.surname,
-                        'email': obj.email,
-                        'sector': obj.sector,
-                        'role': obj.role,
-                        'parent_level': obj.parent_level
-                        }
-        index += 1
+
+    if (len(objects) > 0):
+        index = 0
+        for obj in objects:
+            organogram[index] = {
+                            'id': index,
+                            'name': obj.name,
+                            'surname': obj.surname,
+                            'email': obj.email,
+                            'sector': obj.sector,
+                            'role': obj.role,
+                            'parent_level': obj.parent_level
+                            }
+            index += 1
+    else:
+        organogram['error'] = "Nessun dato trovato. Riprovare o contattare l'amministratore."
+
     return JsonResponse(organogram)
 
 def timeline(request):
@@ -39,16 +44,20 @@ def timeline(request):
 def get_timeline(request):
     timeline = {}
     processes = Timeline.objects.all()
-    id = 0
-    for record in processes:
-        timeline[id] = {
-                        'processo': record.process.name,
-                        'referente': record.referent.first_name +' '+ record.referent.last_name,
-                        'data_inizio': record.start_date,
-                        'data_fine': record.end_date,
-                        'compito': record.job
-                        }
-        id += 1
+
+    if (len(processes) > 0):
+        id = 0
+        for record in processes:
+            timeline[id] = {
+                            'processo': record.process.name,
+                            'referente': record.referent.first_name +' '+ record.referent.last_name,
+                            'data_inizio': record.start_date,
+                            'data_fine': record.end_date,
+                            'compito': record.job
+                            }
+            id += 1
+    else:
+        timeline['error'] = "Nessun dato trovato. Riprovare o contattare l'amministratore."
 
     return JsonResponse(timeline)
 

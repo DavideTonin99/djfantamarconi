@@ -1,4 +1,5 @@
 function draw_timeline() {
+    // console.log(timeline_data);
     $('#content').append("<div id='timeline-div' style = 'height:400px'></div>");
     var container = document.getElementById('timeline-div');
 
@@ -34,7 +35,6 @@ function draw_timeline() {
         timeline.push(row);
     });
 
-    console.log(timeline);
     dataTable.addRows(timeline);
     chart.draw(dataTable);
 }

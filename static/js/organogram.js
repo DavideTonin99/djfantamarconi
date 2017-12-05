@@ -1,5 +1,5 @@
 function draw_organogram() {
-    console.log(organogram_data);
+    // console.log(organogram_data);
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Nome');
     data.addColumn('string', 'Livello Superiore');
