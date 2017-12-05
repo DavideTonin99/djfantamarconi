@@ -29,3 +29,15 @@ class Timeline(models.Model):
 
     def __str__(self):
         return ", ".join([self.process.name, self.referent.username, self.job])
+
+class Organogram(models.Model):
+
+    name = models.CharField(max_length=255, unique=True, blank=False, null=False)
+    surname = models.CharField(max_length=255, unique=True, blank=False, null=False)
+    email = models.EmailField(max_length=255)
+    sector = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    parent_level = models.IntegerField()
+
+    def __str__(self):
+        return ", ".join([self.name, self.surname, str(self.parent_level)])

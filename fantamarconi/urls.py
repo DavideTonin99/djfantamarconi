@@ -1,11 +1,17 @@
 from django.conf.urls import url
-from fantamarconi.views import home, timeline, get_timeline, ProcessesView, view_profile, edit_profile, register
+from fantamarconi.views import ( home, organogram, get_organogram,
+                                timeline, get_timeline, ProcessesView,
+                                view_profile, edit_profile, register )
 from django.contrib.auth.views import login, logout
 
 # app_name = 'fantamarconi'
 
 urlpatterns = [
     url(r'^$', home, name='home'),
+    # Organogram
+    url(r'^organogram/$', organogram, name='organogram'),
+    url(r'^ajax/get_organogram/$', get_organogram, name='get_organogram'),
+    # Timeline
     url(r'^timeline/$', timeline, name='timeline'),
     url(r'^ajax/get_timeline/$', get_timeline, name='get_timeline'),
     url(r'^processes/$', ProcessesView.as_view(), name='processes'),

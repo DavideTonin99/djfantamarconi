@@ -8,19 +8,37 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
-from fantamarconi.models import Processes, Timeline
+from fantamarconi.models import Processes, Timeline, Organogram
 
 def home(request):
     return render(request, template_name='home.html')
+
+def organogram(request):
+    return render(request, template_name='organogram.html')
+
+def get_organogram(request):
+    organogram = {}
+    objects = Organogram.objects.all()
+    index = 0
+    for obj in objects:
+        organogram[index] = {
+                        'id': index,
+                        'name': obj.name,
+                        'surname': obj.surname,
+                        'email': obj.email,
+                        'sector': obj.sector,
+                        'role': obj.role,
+                        'parent_level': obj.parent_level
+                        }
+        index += 1
+    return JsonResponse(organogram)
 
 def timeline(request):
     return render(request, template_name='timeline.html')
 
 def get_timeline(request):
     timeline = {}
-
     processes = Timeline.objects.all()
-
     id = 0
     for record in processes:
         timeline[id] = {
@@ -51,10 +69,12 @@ class ProcessesView(TemplateView):
                                 for process in processes]
         return context
 
+
 @login_required
 def view_profile(request):
     args = {'user':request.user}
     return render(request, 'profile.html', args)
+
 
 @login_required
 def edit_profile(request):
@@ -70,6 +90,7 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user)
         args = {'form':form}
         return render(request, 'edit_profile.html', args)
+
 
 @login_required
 def register(request):

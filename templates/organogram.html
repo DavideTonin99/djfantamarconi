@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | ORGANIGRAMMA</title> {% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{% static 'js/organogram.js' %}"></script>
+    <script>
+      var organogram_data;
+
+      $(document).ready( function() {
+        $.get("{% url 'get_organogram' %}",
+        {
+          dataType: "json"
+        }
+        ).done(function(data) {
+          if (data.error !== undefined & data.error !== "") {
+              alert('Error '+data.error);
+          } else {
+              console.log(data);
+              organogram_data = data;
+              google.charts.load('current', {packages:["orgchart"]});
+              google.charts.setOnLoadCallback(draw_organogram);
+          }
+        })
+        .fail(function() {
+          alert("Failed");
+        });
+      });
+    </script>
+{% endblock %}
