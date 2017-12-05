@@ -38,3 +38,15 @@ function draw_timeline() {
     dataTable.addRows(timeline);
     chart.draw(dataTable);
 }
+
+function select_referent() {
+    if ($('#timeline-div') !== undefined) {
+        $('#timeline-div').remove();
+    }
+
+    if ($('#message-row') !== undefined) {
+        $('#message-row').remove();
+    }
+
+    load_data();
+}

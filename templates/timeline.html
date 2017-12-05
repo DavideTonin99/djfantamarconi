@@ -4,6 +4,32 @@
 
 {% block content %}
 
+<div class="row" id='select-referent'>
+    <div class='justify-content-md-center col-sm-10 offset-sm-1'>
+        <h4>Seleziona referente</h4>
+        <form method="get">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon col-sm-3">Nome</span>
+                    <input class="form-control" id="name-referent-input" type="text" value=""/>
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon col-sm-3">Cognome</span>
+                    <input class="form-control" id="surname-referent-input" type="text" value=""/>
+                </div>
+            </div>
+            <br  />
+            <button class="btn btn-warning col-sm-6" type="button" onclick='select_referent()'>SELEZIONA</button>
+        </form>
+        <br />
+        <!-- Ricarica tutti i processi -->
+        <form method="get">
+            <button class="btn btn-primary col-sm-6" type="submit">VEDI TUTTI</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block script %}
@@ -13,20 +39,21 @@
         var timeline_data;
         var person_selected;
 
-        $(document).ready( function() {
-            var url_params = new URLSearchParams(window.location.search);
-            if (url_params.has('person')) {
-                person_selected = url_params.get('person');
-            }
+        function load_data() {
+            first_name = $('#name-referent-input').val();
+            last_name = $('#surname-referent-input').val();
+
+            person_selected = first_name + ' ' + last_name;
 
         	$.get("{% url 'get_timeline' %}",
                 {
-                    person: person_selected,
+                    first_name: first_name,
+                    last_name: last_name,
                     dataType: "json"
                 }
                 ).done(function(data) {
                     if (data.error !== undefined & data.error !== "") {
-                        $('#content').append("<div class='row'><h4 class='col-sm-12 text-warning text-center'>Attenzione: "+data.error+"</h4></div>");
+                        $('#content').append("<div class='row' id='message-row'><h4 class='col-sm-12 text-warning text-center'>Attenzione: "+data.error+"</h4></div>");
                     } else {
                         timeline_data = data;
                         google.charts.load('current', {packages:["timeline"]});
@@ -34,8 +61,12 @@
                     }
                 })
                 .fail(function() {
-                    $('#content').append("<div class='row'><h4 class='col-sm-12 text-danger text-center'>Errore durante il caricamento dei dati. Riprovare o contattare l'amministratore,</h4></div>");
+                    $('#content').append("<div class='row' id='message-row'><h4 class='col-sm-12 text-danger text-center'>Errore durante il caricamento dei dati. Riprovare o contattare l'amministratore,</h4></div>");
         	});
+        }
+
+        $(document).ready( function() {
+            load_data();
         });
     </script>
 {% endblock %}

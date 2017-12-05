@@ -41,7 +41,7 @@ nav > .navbar-toggler {
 #content {
     padding-top: 40px;
     max-width: 100%;
-    overflow: auto;
+    overflow: hidden;
     text-align:center;
     margin-top: 10px;
 }

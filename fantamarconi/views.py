@@ -43,7 +43,14 @@ def timeline(request):
 
 def get_timeline(request):
     timeline = {}
-    processes = Timeline.objects.all()
+
+    first_name = request.GET['first_name']
+    last_name = request.GET['last_name']
+
+    if (first_name != "" or last_name != ""):
+        processes = Timeline.objects.filter(referent__first_name__contains=first_name, referent__last_name__contains=last_name)
+    else:
+        processes = Timeline.objects.all()
 
     if (len(processes) > 0):
         id = 0
