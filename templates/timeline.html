@@ -53,7 +53,11 @@
             first_name = $('#name-referent-input').val();
             last_name = $('#surname-referent-input').val();
 
-            person_selected = first_name + ' ' + last_name;
+            person_selected = first_name
+
+            if (last_name !== "" ) {
+                person_selected += ' ' + last_name;
+            }
 
         	$.get("{% url 'get_timeline' %}",
                 {
