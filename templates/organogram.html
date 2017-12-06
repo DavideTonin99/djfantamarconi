@@ -2,8 +2,16 @@
 {% load static %}
 {% block title %} <title>Fantamarconi | ORGANIGRAMMA</title> {% endblock %}
 
-{% block content %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+{% endblock %}
 
+{% block content %}
+<br />
+<div class="spinner" id='spinner'>
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+</div>
 {% endblock %}
 
 {% block script %}
@@ -28,6 +36,9 @@
             })
             .fail(function() {
                 $('#content').append("<div class='row'><h4 class='col-sm-12 text-danger text-center'>Errore durante il caricamento dei dati. Riprovare o contattare l'amministratore,</h4></div>");
+            })
+            .always( function() {
+                $('#spinner').remove();
             });
         });
     </script>

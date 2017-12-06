@@ -2,8 +2,11 @@
 {% load static %}
 {% block title %} <title>Fantamarconi | TIMELINE</title> {% endblock %}
 
-{% block content %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="row" id='select-referent'>
     <div class='justify-content-md-center col-sm-10 offset-sm-1'>
         <h4>Seleziona referente</h4>
@@ -27,6 +30,13 @@
         <form method="get">
             <button class="btn btn-primary col-sm-6" type="submit">VEDI TUTTI</button>
         </form>
+
+        <br />
+        <div class="spinner" id='spinner'>
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+
     </div>
 </div>
 
@@ -62,7 +72,10 @@
                 })
                 .fail(function() {
                     $('#content').append("<div class='row' id='message-row'><h4 class='col-sm-12 text-danger text-center'>Errore durante il caricamento dei dati. Riprovare o contattare l'amministratore,</h4></div>");
-        	});
+        	})
+            .always( function() {
+                $('#spinner').remove();
+            });
         }
 
         $(document).ready( function() {
