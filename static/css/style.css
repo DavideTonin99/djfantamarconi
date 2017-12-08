@@ -67,9 +67,9 @@ td, th {
 
 th {
     text-align: center;
-    background: orange;
+    background: #123772;
     color: white;
-    border: 2px solid darkorange !important;
+    border: 2px solid #0a2042 !important;
 }
 
 .role {

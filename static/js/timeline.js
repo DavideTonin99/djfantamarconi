@@ -1,6 +1,6 @@
 function draw_timeline() {
     // console.log(timeline_data);
-    $('#content').append("<div id='timeline-div' style = 'height:400px'></div>");
+    $("<div id='timeline-div' style = 'height:400px'></div>").insertBefore('#add-timeline');
     var container = document.getElementById('timeline-div');
 
     var chart = new google.visualization.Timeline(container);
