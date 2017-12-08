@@ -20,7 +20,7 @@ function draw_organogram() {
     data.addRows(organogram);
 
     // Create the chart.
-    var chart = new google.visualization.OrgChart($('#content').get(0));
+    var chart = new google.visualization.OrgChart($('#organogram').get(0));
     // Draw the chart, setting the allowHtml option to true for the tooltips.
     chart.draw(data, {allowHtml:true,allowCollapse:true});
 }

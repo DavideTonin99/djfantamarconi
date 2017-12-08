@@ -13,9 +13,33 @@ from fantamarconi.models import Processes, Timeline, Organogram
 def home(request):
     return render(request, template_name='home.html')
 
+
+class ProcessesView(TemplateView):
+
+    model = Processes
+    template_name = 'processes.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProcessesView, self).get_context_data(**kwargs)
+        # Add in a QuerySet of all the processes
+        processes = Processes.objects.all()
+
+        if (len(processes) > 0):
+            context['processes'] = [({'process':process,
+                                    'referent_name': process.referent.first_name,
+                                    'referent_surname': process.referent.last_name,
+                                    'referent_email': process.referent.email})
+                                    for process in processes]
+        else:
+            context['error'] = 'Nessun risultato trovato'
+        return context
+
+
+# organogram page
 def organogram(request):
     return render(request, template_name='organogram.html')
 
+# return organogram data
 def get_organogram(request):
     organogram = {}
     objects = Organogram.objects.all()
@@ -38,15 +62,18 @@ def get_organogram(request):
 
     return JsonResponse(organogram)
 
+# timeline page
 def timeline(request):
     return render(request, template_name='timeline.html')
 
+# return timeline data
 def get_timeline(request):
     timeline = {}
 
     first_name = request.GET['first_name']
     last_name = request.GET['last_name']
 
+    # check for referent selection
     if (first_name != "" or last_name != ""):
         processes = Timeline.objects.filter(referent__first_name__contains=first_name, referent__last_name__contains=last_name)
     else:
@@ -67,23 +94,6 @@ def get_timeline(request):
         timeline['error'] = "Nessun dato trovato. Riprovare o contattare l'amministratore."
 
     return JsonResponse(timeline)
-
-class ProcessesView(TemplateView):
-
-    model = Processes
-    template_name = 'processes.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(ProcessesView, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the processes
-        processes = Processes.objects.all()
-
-        context['processes'] = [({'process':process,
-                                'referent_name': process.referent.first_name,
-                                'referent_surname': process.referent.last_name,
-                                'referent_email': process.referent.email})
-                                for process in processes]
-        return context
 
 
 @login_required

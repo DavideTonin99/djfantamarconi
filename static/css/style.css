@@ -105,6 +105,16 @@ button:hover {
     cursor: pointer;
 }
 
+.btn-dark {
+    color: white;
+    background-color: #343a40;
+}
+
+.btn-dark:hover {
+    color: white;
+    background-color: #23272b;
+}
+
 #json-export {
     padding: 13px;
     background: #393c3c;
