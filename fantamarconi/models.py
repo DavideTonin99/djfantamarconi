@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 class Processes(models.Model):
 
@@ -11,10 +12,13 @@ class Processes(models.Model):
     start_date = models.DateField(auto_now=False, null=True, blank=True)
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     referent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    slug = models.SlugField()
 
     def __str__(self):
         return str(self.name)
 
+    def get_absolute_url(self):
+        return reverse("processo", kwargs={"slug":self.slug})
 
 class Timeline(models.Model):
 

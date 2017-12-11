@@ -35,6 +35,23 @@ class ProcessesView(TemplateView):
         return context
 
 
+class MyProcessesView(TemplateView):
+    model = Processes
+    template_name = 'processes.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MyProcessesView, self).get_context_data(**kwargs)
+        processes = Processes.objects.all().filter(referent = self.request.user)
+
+        if (len(processes) > 0):
+            context['processes'] = [({'process':process,
+                                    'referent_name': process.referent.first_name,
+                                    'referent_surname': process.referent.last_name,
+                                    'referent_email': process.referent.email})
+                                    for process in processes]
+        else:
+            context['error'] = 'Nessun risultato trovato'
+        return context
 # organogram page
 def organogram(request):
     return render(request, template_name='organogram.html')

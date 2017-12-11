@@ -20,7 +20,12 @@
             <tbody>
                 {% for row in processes %}
                     <tr>
-                        <td class="align-middle">{{ row.process.name }}</td>
+                        {% if request.user == row.process.referent or request.user.is_superuser %}
+                        <td class="align-middle"><a href="{{ row.process.get_absolute_url }}">{{ row.process.name }}</a></td>
+                        {% else %}
+                        <td class="align-middle">{{ row.process.name }}</a></td>
+                        {% endif %}
+
                         <td class="align-middle">{{ row.referent_name }} {{ row.referent_surname }}</td>
                         <td class="align-middle">{{ row.referent_email }}</td>
                         <td class="align-middle">{{ row.process.start_date }}</td>

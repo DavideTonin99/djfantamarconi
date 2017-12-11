@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | {{ object.name }}</title> {% endblock %}
+
+{% block content %}
+<div class="row">
+    <h1 class="col-md-12 text-center">Modifica processo {{ object.name }}</h1>
+</div>
+<div class="row">
+    <div class='justify-content-md-center col-sm-10 offset-sm-1'>
+        <form method="post">
+            {% csrf_token %}
+            <div class="col-sm-12">
+                {{ form.name.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Nome</span>
+                    {{ form.name }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.start_date.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Data di Inizio</span>
+                    {{ form.start_date }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.end_date.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Data di Fine</span>
+                    {{ form.end_date }}
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                {{ form.referent.errors }}
+                <div class="input-group">
+                    <span class="input-group-addon">Referente</span>
+                    {{ form.referent }}
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-warning col-sm-8" type="submit">MODIFICA</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("input").each( function(index, element) {
+            $(element).attr("class", "form-control");
+        });
+    });
+</script>
+{% endblock %}
