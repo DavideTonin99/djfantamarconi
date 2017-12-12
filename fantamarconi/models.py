@@ -18,7 +18,7 @@ class Processes(models.Model):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse("processo", kwargs={"slug":self.slug})
+        return reverse("single-process", kwargs={"slug":self.slug})
 
 class Timeline(models.Model):
 

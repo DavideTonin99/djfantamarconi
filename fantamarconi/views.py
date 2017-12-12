@@ -52,6 +52,7 @@ class MyProcessesView(TemplateView):
         else:
             context['error'] = 'Nessun risultato trovato'
         return context
+        
 # organogram page
 def organogram(request):
     return render(request, template_name='organogram.html')

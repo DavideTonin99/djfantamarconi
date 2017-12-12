@@ -28,7 +28,7 @@ urlpatterns = [
         fields = ['name','start_date', 'end_date','referent'],
         template_name = 'single_process.html',
         #redirect = 'MyProcessesView'
-    )) , name="processo"),
+    )) , name="single-process"),
 
     url(r'^login/$', login, kwargs={'template_name': 'login.html', 'redirect_authenticated_user': True}, name='login'),  # Cambio template  di login
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),
