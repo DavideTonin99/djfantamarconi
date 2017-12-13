@@ -12,7 +12,7 @@ class Processes(models.Model):
     start_date = models.DateField(auto_now=False, null=True, blank=True)
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     referent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    slug = models.SlugField()
+    slug = models.SlugField(default=name)
 
     def __str__(self):
         return str(self.name)
