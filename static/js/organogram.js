@@ -13,7 +13,6 @@ function draw_organogram() {
         if (current_person.parent_level === undefined || current_person.parent_level === null) {
           current_person.parent_level = '0'
         }
-
         row = [
             {v:current_person.name + " " +current_person.surname,f:current_person.name+" "+current_person.surname+"<br><div class='role'>"+current_person.sector.toUpperCase()+": "+current_person.role+"</div>"},
             organogram_data[current_person.parent_level.toString()].name + " " + organogram_data[current_person.parent_level.toString()].surname,

@@ -65,9 +65,10 @@ def get_organogram(request):
     if (len(objects) > 0):
         for obj in objects:
             if obj.parent_level == None:
-                parent_level = 0
+                parent_level = obj.id
             else:
                 parent_level = obj.parent_level.id
+
             organogram[obj.id] = {
                             'id': obj.id,
                             'name': obj.name,

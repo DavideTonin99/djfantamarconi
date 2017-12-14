@@ -38,7 +38,6 @@
                 if (data.error !== undefined & data.error !== "") {
                     $('#organogram').append("<div class='row'><h4 class='col-sm-12 text-warning text-center'>Attenzione: "+data.error+"</h4></div>");
                 } else {
-                    console.log(data);
                     organogram_data = data;
                     google.charts.load('current', {packages:["orgchart"]});
                     google.charts.setOnLoadCallback(draw_organogram);
