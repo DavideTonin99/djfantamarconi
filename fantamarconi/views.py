@@ -52,7 +52,7 @@ class MyProcessesView(TemplateView):
         else:
             context['error'] = 'Nessun risultato trovato'
         return context
-        
+
 # organogram page
 def organogram(request):
     return render(request, template_name='organogram.html')
@@ -65,6 +65,10 @@ def get_organogram(request):
     if (len(objects) > 0):
         index = 0
         for obj in objects:
+            if obj.parent_level == None:
+                parent_level = 0
+            else:
+                parent_level = obj.parent_level.id
             organogram[index] = {
                             'id': index,
                             'name': obj.name,
@@ -72,7 +76,7 @@ def get_organogram(request):
                             'email': obj.email,
                             'sector': obj.sector,
                             'role': obj.role,
-                            'parent_level': obj.parent_level
+                            'parent_level': parent_level
                             }
             index += 1
     else:

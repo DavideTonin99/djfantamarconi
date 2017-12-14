@@ -39,13 +39,14 @@ class Organogram(models.Model):
     class Meta:
         verbose_name = 'Organigramma'
         verbose_name_plural = 'Organigramma'
+        unique_together = (('name', 'surname', 'email', 'sector', 'role', 'parent_level'),)
 
     name = models.CharField(max_length=255, unique=True, blank=False, null=False)
     surname = models.CharField(max_length=255, unique=True, blank=False, null=False)
     email = models.EmailField(max_length=255)
     sector = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
-    parent_level = models.IntegerField()
+    parent_level = models.ForeignKey('Organogram', null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
         return ", ".join(['ID:'+str(self.id), self.name, self.surname, 'PARENT:'+str(self.parent_level)])
