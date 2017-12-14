@@ -49,4 +49,4 @@ class Organogram(models.Model):
     parent_level = models.ForeignKey('Organogram', null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
-        return ", ".join(['ID:'+str(self.id), self.name, self.surname, 'PARENT:'+str(self.parent_level)])
+        return ", ".join(['[ID:'+str(self.id), self.name, self.surname, 'PARENT:'+str(self.parent_level), ']'])

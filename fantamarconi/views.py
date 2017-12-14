@@ -63,14 +63,13 @@ def get_organogram(request):
     objects = Organogram.objects.all()
 
     if (len(objects) > 0):
-        index = 0
         for obj in objects:
             if obj.parent_level == None:
                 parent_level = 0
             else:
                 parent_level = obj.parent_level.id
-            organogram[index] = {
-                            'id': index,
+            organogram[obj.id] = {
+                            'id': obj.id,
                             'name': obj.name,
                             'surname': obj.surname,
                             'email': obj.email,
@@ -78,7 +77,7 @@ def get_organogram(request):
                             'role': obj.role,
                             'parent_level': parent_level
                             }
-            index += 1
+
     else:
         organogram['error'] = "Nessun dato trovato. Riprovare o contattare l'amministratore."
 
