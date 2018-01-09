@@ -18,7 +18,7 @@
 {% if user.is_authenticated and user.is_superuser %}
     <br />
     <div class='row' id='add-organogram'>
-        <a class='btn btn-dark col-sm-4 offset-sm-4' href='{% url 'add-organogram' %}' target="_blank">+ AGGIUNGI ELEMENTO</a>
+        <a class='waves-effect waves-light btn-large col s4 offset-s4 blue-grey darken-4' href='{% url 'add-organogram' %}' target="_blank">+ AGGIUNGI ELEMENTO</a>
     </div>
 {% endif %}
 {% endblock %}
