@@ -4,7 +4,7 @@
 
 {% block content %}
     {% if error != null %}
-        <div class='row' id='message-row'><h4 class='col-sm-12 text-danger text-center'>{{ error }}</h4></div>
+        <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ error }}</h4></div>
     {% else %}
     <div class='row' id='table-container'>
         <table id='result-table' class='bordered highlight responsive-table'>

@@ -4,37 +4,37 @@
 
 {% block content %}
 <div class="row">
-    <h1 class="col-md-12 text-center">LOGIN</h1>
+    <h2 class="col m12">LOGIN</h2>
 </div>
 <div class="row">
-    <div class='justify-content-md-center col-sm-6 offset-sm-3'>
-        <form method="post">
-            {% csrf_token %}
-            <div class='col-sm-12 errorlist'>
-                {% if form.errors %}
-                    Username o password non corretti. Riprovare.
-                {% endif %}
-            </div>
-            <br />
-            <div class="col-sm-12">
+    <form class="col s8 offset-s2" method="post">
+        {% csrf_token %}
+        <div class='col s12 errorlist'>
+            {% if form.errors %}
+                Username o password non corretti. Riprovare.
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col s12">
                 {{ form.username.errors }}
-                <div class="input-group">
-                    <span class="input-group-addon">Username</span>
+                <div class="input-field col s12">
+                    <label for="id_username">Username</label>
                     {{ form.username }}
                 </div>
             </div>
-            <br />
-            <div class="col-sm-12">
+        </div>
+        <div class="row">
+            <div class="col s12">
                 {{ form.password.errors }}
-                <div class="input-group">
-                    <span class="input-group-addon">Password</span>
+                <div class="input-field col s12">
+                    <label for="id_password">Password</label>
                     {{ form.password }}
                 </div>
             </div>
-            <br />
-
-            <button class="btn btn-primary col-sm-8" type="submit">LOGIN</button
-        </form>
+        </div>
+        <br />
+        <button class="waves-effect waves-light btn-large col s4 offset-s4 red darken-3" type="submit">LOGIN</button>
+    </form>
     </div>
 </div>
 
