@@ -54,17 +54,10 @@
                 <br />
                 <button class="waves-effect waves-light btn-large col s4 offset-s4 red darken-3" type="submit">MODIFICA</button>
             </form>
-        </div> 
+        </div>
     </div>
     {% endif %}
 {% endblock %}
 
 {% block script %}
-<script>
-    $(document).ready(function() {
-        $("input").each( function(index, element) {
-            $(element).attr("class", "form-control");
-        });
-    });
-</script>
 {% endblock %}
