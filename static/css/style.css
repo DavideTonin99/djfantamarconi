@@ -65,12 +65,12 @@ td, th {
     border: 1px solid #ddd;
 }
 
-th {
+/*th {
     text-align: center;
     background: #1b4b96;
     color: white;
     border: 2px solid #0a2042 !important;
-}
+}*/
 
 .role {
     color: red;
