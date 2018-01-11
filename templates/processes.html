@@ -3,17 +3,17 @@
 {% block title %} <title>Fantamarconi | PROCESSI</title> {% endblock %}
 
 {% block content %}
-    {% if error != null %}
-        <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ error }}</h4></div>
+    {% if macro_processes_error != null %}
+        <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ macro_processes_error }}</h4></div>
     {% else %}
-        <table id='result-table' class='highlight responsive-table'>
+        <table id='result-table' class='highlight centered responsive-table'>
             <thead>
                 <tr class="blue-grey darken-4 white-text">
-                    <th class="center-align">NOME</th>
-                    <th class="center-align">REFERENTE</th>
-                    <th class="center-align">EMAIL</th>
-                    <th class="center-align">DATA INIZIO</th>
-                    <th class="center-align">DATA FINE</th>
+                    <th>NOME</th>
+                    <th>REFERENTE</th>
+                    <th>EMAIL</th>
+                    <th>DATA INIZIO</th>
+                    <th>DATA FINE</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,10 +34,52 @@
             </tbody>
         </table>
     {% endif %}
+    <br />
     {% if user.is_authenticated and user.is_superuser %}
         <br />
         <div class='row' id='add-process'>
-            <a class='waves-effect waves-light btn-large col s4 offset-s4 blue-grey darken-4' href='{% url 'add-process' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
+            <a class='waves-effect waves-light btn-large col s4 offset-s4 blue-grey darken-4' href='{% url 'add-process' %}' target="_blank">+ AGGIUNGI MACRO PROCESSO</a>
         </div>
     {% endif %}
+    {% if page == "myprocesses" %}
+        <div class="divider"></div>
+        <br />
+        {% if timeline_processes_error != null %}
+            <div class='row' id='message-row'><h4 class='col s12 text-center blue-text text-darken-4'>{{ timeline_processes_error }}</h4></div>
+        {% else %}
+            <table id='result-table' class='highlight centered responsive-table'>
+                <thead>
+                    <tr class="blue-grey darken-4 white-text">
+                        <th>MACRO PROCESSO</th>
+                        <th>REFERENTE</th>
+                        <th>EMAIL</th>
+                        <th>COMPITO</th>
+                        <th>DATA INIZIO</th>
+                        <th>DATA FINE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in timeline_processes %}
+                        <tr>
+                            <td class="align-middle">{{ row.process.process }}</a></td>
+                            <td class="align-middle">{{ row.referent_name }} {{ row.referent_surname }}</td>
+                            <td class="align-middle">{{ row.referent_email }}</td>
+                            <td class="align-middle">{{ row.process.job }}</td>
+                            <td class="align-middle">{{ row.process.start_date }}</td>
+                            <td class="align-middle">{{ row.process.end_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <br />
+        {% if user.is_authenticated and user.is_superuser %}
+            <br />
+            <div class='row' id='add-process'>
+                <a class='waves-effect waves-light btn-large col s4 offset-s4 blue-grey darken-4' href='{% url 'add-timeline' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
+            </div>
+        {% endif %}
+    {% endif %}
+
+
 {% endblock %}

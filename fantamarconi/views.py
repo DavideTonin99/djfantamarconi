@@ -31,7 +31,7 @@ class ProcessesView(TemplateView):
                                     'referent_email': process.referent.email})
                                     for process in processes]
         else:
-            context['error'] = 'Nessun risultato trovato'
+            context['macro_processes_error'] = 'Nessun risultato trovato'
         return context
 
 
@@ -41,19 +41,34 @@ class MyProcessesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(MyProcessesView, self).get_context_data(**kwargs)
-        if (self.request.user.is_superuser):
-            processes = Processes.objects.all()
-        else:
-            processes = Processes.objects.all().filter(referent = self.request.user)
 
-        if (len(processes) > 0):
+        if (self.request.user.is_superuser):
+            macro_processes = Processes.objects.all()
+            timeline_processes = Timeline.objects.all()
+        else:
+            macro_processes = Processes.objects.all().filter(referent = self.request.user)
+            timeline_processes = Timeline.objects.all().filter(referent = self.request.user)
+
+        context['page'] = "myprocesses"
+
+        if (len(macro_processes) > 0):
             context['processes'] = [({'process':process,
                                     'referent_name': process.referent.first_name,
                                     'referent_surname': process.referent.last_name,
                                     'referent_email': process.referent.email})
-                                    for process in processes]
+                                    for process in macro_processes]
         else:
-            context['error'] = 'Nessun risultato trovato'
+            context['macro_processes_error'] = 'Nessun Macro Processo trovato'
+
+        if (len(timeline_processes) > 0):
+            context['timeline_processes'] = [({'process':process,
+                                    'referent_name': process.referent.first_name,
+                                    'referent_surname': process.referent.last_name,
+                                    'referent_email': process.referent.email})
+                                    for process in timeline_processes]
+        else:
+            context['timeline_processes_error'] = 'Nessun processo trovato'
+
         return context
 
 # organogram page
