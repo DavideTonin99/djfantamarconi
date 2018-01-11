@@ -6,15 +6,14 @@
     {% if error != null %}
         <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ error }}</h4></div>
     {% else %}
-    <div class='row' id='table-container'>
-        <table id='result-table' class='bordered highlight responsive-table'>
+        <table id='result-table' class='highlight responsive-table'>
             <thead>
-                <tr>
-                    <th class="align-middle">NOME</th>
-                    <th class="align-middle">REFERENTE</th>
-                    <th class="align-middle">EMAIL</th>
-                    <th class="align-middle">DATA INIZIO</th>
-                    <th class="align-middle">DATA FINE</th>
+                <tr class="blue-grey darken-4 white-text">
+                    <th class="center-align">NOME</th>
+                    <th class="center-align">REFERENTE</th>
+                    <th class="center-align">EMAIL</th>
+                    <th class="center-align">DATA INIZIO</th>
+                    <th class="center-align">DATA FINE</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,9 +33,9 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
     {% endif %}
     {% if user.is_authenticated and user.is_superuser %}
+        <br />
         <div class='row' id='add-process'>
             <a class='waves-effect waves-light btn-large col s4 offset-s4 blue-grey darken-4' href='{% url 'add-process' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
         </div>

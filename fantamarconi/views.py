@@ -41,7 +41,10 @@ class MyProcessesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(MyProcessesView, self).get_context_data(**kwargs)
-        processes = Processes.objects.all().filter(referent = self.request.user)
+        if (self.request.user.is_superuser):
+            processes = Processes.objects.all()
+        else:
+            processes = Processes.objects.all().filter(referent = self.request.user)
 
         if (len(processes) > 0):
             context['processes'] = [({'process':process,

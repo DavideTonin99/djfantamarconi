@@ -8,27 +8,38 @@
 
 {% block content %}
 <div class="row" id='select-referent'>
-    <div class='justify-content-md-center col-sm-10 offset-sm-1'>
+
         <h4>Seleziona referente</h4>
+
         <form method="get">
-            <div class="col-sm-12">
-                <div class="input-group">
-                    <span class="input-group-addon col-sm-3">Nome</span>
-                    <input class="form-control" id="name-referent-input" type="text" value=""/>
-                </div>
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon col-sm-3">Cognome</span>
-                    <input class="form-control" id="surname-referent-input" type="text" value=""/>
+            <div class="row">
+                <div class="col s8 offset-s2">
+                    {{ form.username.errors }}
+                    <div class="input-field col s12">
+                        <label for="id_username">Nome</label>
+                        <input id="name-referent-input" type="text" value=""/>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s8 offset-s2">
+                    {{ form.username.errors }}
+                    <div class="input-field col s12">
+                        <label for="id_username">Cognome</label>
+                        <input id="surname-referent-input" type="text" value=""/>
+                    </div>
+                </div>
+            </div>
+
             <br  />
-            <button class="btn btn-warning col-sm-6" type="button" onclick='select_referent()'>SELEZIONA</button>
+            <button class="btn waves-effect waves-light col s4 offset-s4 blue darken-3" type="button" onclick='select_referent()'>SELEZIONA</button>
         </form>
+
+        <br />
         <br />
         <!-- Ricarica tutti i processi -->
         <form method="get">
-            <button class="btn btn-primary col-sm-6" type="submit">VEDI TUTTI</button>
+            <button class="btn waves-effect waves-light col s4 offset-s4 amber darken-1" type="submit">VEDI TUTTI</button>
         </form>
 
         <br />
@@ -36,8 +47,6 @@
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
         </div>
-
-    </div>
 </div>
 
 {% if user.is_authenticated and user.is_superuser %}

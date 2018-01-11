@@ -46,14 +46,12 @@ nav > .navbar-toggler {
     margin-top: 10px;
 }
 
-#table-container {
+/*#table-container {
     margin-left: 2px;
     max-width: 100%;
     max-height: 500px !important;
     overflow: auto;
-    border-bottom: 1px solid lightgrey;
-    border-top: 1px solid lightgrey;
-}
+}*/
 
 .table {
     text-align: center;
