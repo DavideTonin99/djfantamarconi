@@ -5,7 +5,7 @@ from fantamarconi.views import ( home, organogram, get_organogram,
                                 view_profile, edit_profile, register )
 from django.contrib.auth.views import login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Processes
+from .models import Processes, Timeline
 
 # app_name = 'fantamarconi'
 
@@ -23,12 +23,19 @@ urlpatterns = [
     url(r'^processes/$', ProcessesView.as_view(), name='processes'),
     url(r'^processes/add/$', RedirectView.as_view(url='/admin/fantamarconi/processes/add/'), name='add-process'),
     url(r'^myprocesses/$', login_required(MyProcessesView.as_view()), name='myprocesses'),
-    url(r'^myprocesses/(?P<slug>[\w-]+)/$', login_required(UpdateView.as_view(
+    url(r'^myprocesses/(?P<pk>\d+)/$', login_required(UpdateView.as_view(
         model = Processes,
         fields = ['name','start_date', 'end_date','referent'],
         template_name = 'single_process.html',
         #redirect = 'MyProcessesView'
-    )) , name="single-process"),
+    )) , name="modify-macroprocess"),
+
+    url(r'^myprocesses/micro/(?P<pk>\d+)/$', login_required(UpdateView.as_view(
+        model = Timeline,
+        fields = ['process','start_date', 'end_date','referent', 'job'],
+        template_name = 'single_microprocess.html',
+        #redirect = 'MyProcessesView'
+    )) , name="modify-microprocess"),
 
     url(r'^login/$', login, kwargs={'template_name': 'login.html', 'redirect_authenticated_user': True}, name='login'),  # Cambio template  di login
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),

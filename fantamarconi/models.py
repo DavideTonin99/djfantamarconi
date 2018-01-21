@@ -12,13 +12,12 @@ class Processes(models.Model):
     start_date = models.DateField(auto_now=False, null=True, blank=True)
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     referent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    slug = models.SlugField()
 
     def __str__(self):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse("single-process", kwargs={"slug":self.slug})
+        return reverse("modify-macroprocess", kwargs={"pk":self.id})
 
 class Timeline(models.Model):
 
@@ -33,6 +32,9 @@ class Timeline(models.Model):
 
     def __str__(self):
         return ", ".join([self.process.name, self.referent.username, self.job])
+
+    def get_absolute_url(self):
+        return reverse("modify-microprocess", kwargs={"pk":self.id})
 
 class Organogram(models.Model):
 
