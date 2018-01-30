@@ -2,15 +2,11 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #E0E0E0;
     font-family: sans-serif;
 }
 
 header {
     height: 100px;
-    text-align: center;
-    font-size: 200%;
-    line-height: 100px;
     background: #111111;
     color: white;
     border-bottom: 2px solid #000;
@@ -33,9 +29,7 @@ nav > .navbar-toggler {
     padding-top: 1px;
     min-height: 75vh;
     background: white;
-    border-bottom: 12px solid #e9e9e9;
     text-align:center;
-    margin-bottom: 10px;
 }
 
 #content {
@@ -63,12 +57,10 @@ td, th {
     border: 1px solid #ddd;
 }
 
-/*th {
-    text-align: center;
-    background: #1b4b96;
-    color: white;
-    border: 2px solid #0a2042 !important;
-}*/
+#timeline-div {
+    border: 1px solid lightgrey;
+    margin-bottom: 20px;
+}
 
 .role {
     color: red;
@@ -93,7 +85,7 @@ a:hover {
     text-decoration: none;
 }
 
-a {color: orange}
+a {color: rgb(38, 166, 154);}
 
 a > .btn {
     padding: 20px;
@@ -113,15 +105,6 @@ button:hover {
     background-color: #23272b;
 }
 
-#json-export {
-    padding: 13px;
-    background: #393c3c;
-    color: white;
-    border-radius: 7px;
-}
-
-footer {
-    padding: 20px;
-    padding-left: 50px;
-    line-height: 25px;
+address {
+    font-style: normal;
 }
