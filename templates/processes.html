@@ -6,9 +6,10 @@
     {% if macro_processes_error != null %}
         <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ macro_processes_error }}</h4></div>
     {% else %}
-        <table id='result-table' class='highlight centered responsive-table'>
+    <div class="table-container">
+        <table id='macroprocesses-table' class='highlight centered responsive-table'>
             <thead>
-                <tr class="blue-grey darken-4 white-text">
+                <tr class="grey darken-4 white-text">
                     <th>NOME</th>
                     <th>REFERENTE</th>
                     <th>EMAIL</th>
@@ -33,12 +34,13 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
     {% endif %}
     <br />
     {% if user.is_authenticated and user.is_superuser %}
         <br />
         <div class='row' id='add-process'>
-            <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 blue-grey darken-4' href='{% url 'add-process' %}' target="_blank">+ AGGIUNGI MACRO PROCESSO</a>
+            <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 grey darken-4' href='{% url 'add-process' %}' target="_blank">+ AGGIUNGI MACRO PROCESSO</a>
         </div>
     {% endif %}
     {% if page == "myprocesses" %}
@@ -47,9 +49,10 @@
         {% if timeline_processes_error != null %}
             <div class='row' id='message-row'><h4 class='col s12 text-center blue-text text-darken-4'>{{ timeline_processes_error }}</h4></div>
         {% else %}
-            <table id='result-table' class='highlight centered responsive-table'>
+        <div class="table-container">
+            <table id='processes-table' class='highlight centered responsive-table'>
                 <thead>
-                    <tr class="blue-grey darken-4 white-text">
+                    <tr class="grey darken-4 white-text">
                         <th>MACRO PROCESSO</th>
                         <th>REFERENTE</th>
                         <th>EMAIL</th>
@@ -71,12 +74,14 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+
         {% endif %}
         <br />
         {% if user.is_authenticated and user.is_superuser %}
             <br />
             <div class='row' id='add-process'>
-                <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 blue-grey darken-4' href='{% url 'add-timeline' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
+                <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 grey darken-4' href='{% url 'add-timeline' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
             </div>
         {% endif %}
     {% endif %}

@@ -21,66 +21,71 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="blue-grey lighten-4">
+    <body class="grey darken-4">
+        <div class="navbar-fixed">
+            <nav class="grey darken-4">
+                <div class="nav-wrapper">
+                    <a href="{% url 'home' %}" class="brand-logo left" style="margin-left: 50px;">FANTAMARCONI</a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'organogram' %}">Organigramma</a></li>
+                        <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
+                        <li><a href="{% url 'timeline' %}">Timeline</a></li>
+
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
+
+                        <ul id="account-dropdown" class="dropdown-content">
+                          {% if user.is_superuser %}
+                              <li><a href="/admin/">Admin</a></li>
+                              <li class="{% if request.path_info == '/register/' %} active{% endif %}"><a href="{% url 'register' %}">Registra</a></li>
+                          {% endif %}
+                          <li class="{% if request.path_info == '/profile/' %} active{% endif %}" ><a href="{% url 'view-profile' %}">Profilo</a></li>
+                          <li class="{% if request.path_info == '/profile/edit/' %} active{% endif %}"><a href="{% url 'edit-profile'%}">Modifica profilo</a></li>
+                          <li class="{% if request.path_info == '/logout/' %} active{% endif %}"><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+
+                        <li><a class="dropdown-button" href="#!" data-activates="account-dropdown">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'organogram' %}">Organigramma</a></li>
+                        <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
+                        <li><a href="{% url 'timeline' %}">Timeline</a></li>
+
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
+
+                        <ul id="account-dropdown-mobile" class="dropdown-content">
+                            {% if user.is_superuser %}
+                                <li><a href="/admin/">Admin</a></li>
+                                <li class="{% if request.path_info == '/register/' %} active{% endif %}"><a href="{% url 'register' %}">Registra</a></li>
+                            {% endif %}
+                            <li class="{% if request.path_info == '/profile/' %} active{% endif %}" ><a href="{% url 'view-profile' %}">Profilo</a></li>
+                            <li class="{% if request.path_info == '/profile/edit/' %} active{% endif %}"><a href="{% url 'edit-profile'%}">Modifica profilo</a></li>
+                            <li class="{% if request.path_info == '/logout/' %} active{% endif %}"><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+
+                        <li><a class="dropdown-button" href="#!" data-activates="account-dropdown-mobile">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!--{% if request.path_info == '/fantamarconi/' %}
         <header class="valign-wrapper">
             <div class="row" style="margin-bottom:0">
                 <h2 class="col 12 center-align">FANTAMARCONI</h2>
             </div>
         </header>
-        <nav class="blue-grey darken-4">
-            <div class="nav-wrapper">
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'organogram' %}">Organigramma</a></li>
-                    <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
-                    <li><a href="{% url 'timeline' %}">Timeline</a></li>
-
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
-
-                    <ul id="account-dropdown" class="dropdown-content">
-                      {% if user.is_superuser %}
-                          <li><a href="/admin/">Admin</a></li>
-                          <li class="{% if request.path_info == '/register/' %} active{% endif %}"><a href="{% url 'register' %}">Registra</a></li>
-                      {% endif %}
-                      <li class="{% if request.path_info == '/profile/' %} active{% endif %}" ><a href="{% url 'view-profile' %}">Profilo</a></li>
-                      <li class="{% if request.path_info == '/profile/edit/' %} active{% endif %}"><a href="{% url 'edit-profile'%}">Modifica profilo</a></li>
-                      <li class="{% if request.path_info == '/logout/' %} active{% endif %}"><a href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-
-                    <li><a class="dropdown-button" href="#!" data-activates="account-dropdown">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'organogram' %}">Organigramma</a></li>
-                    <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
-                    <li><a href="{% url 'timeline' %}">Timeline</a></li>
-
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
-
-                    <ul id="account-dropdown-mobile" class="dropdown-content">
-                        {% if user.is_superuser %}
-                            <li><a href="/admin/">Admin</a></li>
-                            <li class="{% if request.path_info == '/register/' %} active{% endif %}"><a href="{% url 'register' %}">Registra</a></li>
-                        {% endif %}
-                        <li class="{% if request.path_info == '/profile/' %} active{% endif %}" ><a href="{% url 'view-profile' %}">Profilo</a></li>
-                        <li class="{% if request.path_info == '/profile/edit/' %} active{% endif %}"><a href="{% url 'edit-profile'%}">Modifica profilo</a></li>
-                        <li class="{% if request.path_info == '/logout/' %} active{% endif %}"><a href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-
-                    <li><a class="dropdown-button" href="#!" data-activates="account-dropdown-mobile">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        {% endif %}-->
 
         <div id="content-container">
 			<div class="container" id="content">
@@ -88,12 +93,12 @@
 			</div>
 		</div>
 
-        <footer class="page-footer blue-grey lighten-4 black-text">
+        <footer class="page-footer grey darken-3 white-text">
           <div class="container">
             <div class="row">
               <div class="col l12 m12 s12">
                 <h4>ITIS G. Marconi Verona</h4>
-                <hr>
+                <hr style="border: 1px solid white">
                 <address>
                     P.le R. Guardini 1<br>
                     Verona, IT 37138<br>
@@ -104,7 +109,7 @@
               </div>
             </div>
           </div>
-          <div class="footer-copyright black-text">
+          <div class="footer-copyright grey darken-4 white-text">
             <div class="container center-align">
             © 2017-2018 Feola Emanuele, Tonin Davide
             </div>
@@ -123,8 +128,8 @@
                     changeYear: true,
                     yearRange: ((new Date()).getFullYear()-1)+":"+((new Date()).getFullYear()+1)
                 });
-
                 $(".button-collapse").sideNav();
+                $('.parallax').parallax();
             });
         </script>
         {% block script %}{% endblock %}
