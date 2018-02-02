@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="row">
-    <h2 class="col m12">LOGIN</h2>
+    <h2 class="col s12 l12 m12 text-center">LOGIN</h2>
 </div>
 <div class="row">
-    <form class="col s8 offset-s2" method="post">
+    <form class="col s12 m8 l8 offset-m2 offset-l2" method="post">
         {% csrf_token %}
         <div class='col s12 errorlist'>
             {% if form.errors %}
@@ -33,7 +33,7 @@
             </div>
         </div>
         <br />
-        <button class="waves-effect waves-light btn-large col s4 offset-s4 green" type="submit">LOGIN</button>
+        <button class="waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 orange" type="submit">LOGIN</button>
     </form>
     </div>
 </div>
