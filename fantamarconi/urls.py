@@ -14,14 +14,14 @@ urlpatterns = [
     # Organogram
     url(r'^organogram/$', organogram, name='organogram'),
     url(r'^ajax/get_organogram/$', get_organogram, name='get_organogram'),
-    url(r'^organogram/add/$', RedirectView.as_view(url='/admin/fantamarconi/organogram/add/'), name='add-organogram'),
+    url(r'^organogram/add/$', RedirectView.as_view(url='/fantamarconi/admin/fantamarconi/organogram/add/'), name='add-organogram'),
     # Timeline
     url(r'^timeline/$', timeline, name='timeline'),
     url(r'^ajax/get_timeline/$', get_timeline, name='get_timeline'),
-    url(r'^timeline/add/$', RedirectView.as_view(url='/admin/fantamarconi/timeline/add/'), name='add-timeline'),
+    url(r'^timeline/add/$', RedirectView.as_view(url='/fantamarconi/admin/fantamarconi/timeline/add/'), name='add-timeline'),
     # Processes
     url(r'^processes/$', ProcessesView.as_view(), name='processes'),
-    url(r'^processes/add/$', RedirectView.as_view(url='/admin/fantamarconi/processes/add/'), name='add-process'),
+    url(r'^processes/add/$', RedirectView.as_view(url='/fantamarconi/admin/fantamarconi/processes/add/'), name='add-process'),
     url(r'^myprocesses/$', login_required(MyProcessesView.as_view()), name='myprocesses'),
     url(r'^myprocesses/(?P<pk>\d+)/$', login_required(UpdateView.as_view(
         model = Processes,

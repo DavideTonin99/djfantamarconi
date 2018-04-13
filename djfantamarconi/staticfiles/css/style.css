@@ -1,0 +1,133 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+header {
+    height: 100px;
+    color: white;
+}
+
+nav > .navbar-toggler {
+    position: absolute;
+    right: 5px;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: orange;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+#sidenav-overlay {
+    z-index: 1;
+}
+
+#content-container {
+    padding-top: 1px;
+    min-height: 75vh;
+    background: white;
+    text-align:center;
+}
+
+#content {
+    padding-top: 40px;
+    max-width: 100%;
+    overflow: hidden;
+    text-align:center;
+    margin-top: 10px;
+}
+
+.table-container {
+    margin-left: 2px;
+    max-width: 100%;
+    max-height: 400px !important;
+    overflow: auto;
+}
+
+.table {
+    text-align: center;
+    margin: 0;
+}
+
+td, th {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+#timeline-div {
+    border: 1px solid lightgrey;
+    margin-bottom: 20px;
+}
+
+.role {
+    color: red;
+    padding: 7px !important;
+}
+
+.errorlist {
+    padding: 0;
+    padding-top: 10px;
+    list-style: none;
+    color: red;
+}
+
+.google-visualization-orgchart-node {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a {color: orange;}
+
+a > .btn {
+    padding: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="url"]:not(.browser-default):focus:not([readonly]),
+input[type="time"]:not(.browser-default):focus:not([readonly]),
+input[type="date"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+input[type="tel"]:not(.browser-default):focus:not([readonly]),
+input[type="number"]:not(.browser-default):focus:not([readonly]),
+input[type="search"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid orange;
+    box-shadow: 0 1px 0 0 orange;
+}
+
+.btn-dark {
+    color: white;
+    background-color: #343a40;
+}
+
+.btn-dark:hover {
+    color: white;
+    background-color: #23272b;
+}
+
+address {
+    font-style: normal;
+}
