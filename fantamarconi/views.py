@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -134,6 +135,15 @@ def get_timeline(request):
         timeline['error'] = "Nessun dato trovato. Riprovare o contattare l'amministratore."
 
     return JsonResponse(timeline)
+
+
+def get_user_info(request):
+    if (request.GET['username'] == ""):
+        return JsonResponse({'error': 'Nessun referente selezionato!'})
+    else:
+        users = User.objects.all().filter(username = request.GET['username'])
+        if (len(users) == 1): return JsonResponse({'name': users[0].first_name, 'surname': users[0].last_name})
+        else: return JsonResponse({'error': 'Referente non trovato!'})
 
 
 @login_required

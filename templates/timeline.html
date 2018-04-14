@@ -32,14 +32,8 @@
             </div>
 
             <br  />
-            <button class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 blue darken-3" type="button" onclick='select_referent()'>SELEZIONA</button>
-        </form>
-
-        <br />
-        <br />
-        <!-- Ricarica tutti i processi -->
-        <form method="get">
-            <button class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 amber darken-1" type="submit">VEDI TUTTI</button>
+            <button class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 blue darken-3" type="button" onclick='select_referent()'>SELEZIONA</button><br><br>
+            <a class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 amber darken-1" href="{% url 'timeline' %}">VEDI TUTTI</a>
         </form>
 
         <br />
@@ -62,7 +56,6 @@
     <script src="{% static 'js/timeline.js' %}"></script>
     <script>
         var timeline_data;
-        var person_selected;
 
         function load_data() {
             first_name = $('#name-referent-input').val();
@@ -98,7 +91,37 @@
         }
 
         $(document).ready( function() {
-            load_data();
+            $('.tooltipped').tooltip({delay: 50}); // for toast
+
+            var url = window.location.href;
+            if (url[url.length-1] !== "/") {
+                url+="/";
+            }
+            var url = url.split('/');
+            var referent = url[url.length-2];
+            
+            $.get("{% url 'get_user_info' %}",
+                {
+                    username: referent,
+                    dataType: "json"
+                }
+                ).done(function(data) {
+                    if (data.error !== undefined & data.error !== "") {
+                        Materialize.toast('<span>'+data.error+' Caricamento di tutti i processi!</span>', 3000)
+                        load_data();
+                    } else {
+                        $('label').addClass('active');
+                        $('#name-referent-input').val(data.name);
+                        $('#surname-referent-input').val(data.surname);
+                        load_data();
+                    }
+                })
+                .fail(function() {
+                    $("<div class='row' id='message-row'><h4 class='col s12 text-danger'>Errore durante il caricamento dei dati. Riprovare o contattare l'amministratore.</h4></div>").insertAfter('#select-referent');
+        	})
+            .always( function() {
+                $('#spinner').remove();
+            });            
         });
     </script>
 {% endblock %}

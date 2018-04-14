@@ -19,6 +19,9 @@ class Processes(models.Model):
     def get_absolute_url(self):
         return reverse("modify-macroprocess", kwargs={"pk":self.id})
 
+    def get_timeline_by_referent(self):
+        return reverse("timeline", kwargs={"referent":self.referent.username})
+        
 class Timeline(models.Model):
 
     class Meta:
@@ -35,6 +38,9 @@ class Timeline(models.Model):
 
     def get_absolute_url(self):
         return reverse("modify-microprocess", kwargs={"pk":self.id})
+
+    def get_timeline_by_referent(self):
+        return reverse("timeline", kwargs={"referent":self.referent.username})
 
 class Organogram(models.Model):
 

@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.views.generic import RedirectView, UpdateView
 from fantamarconi.views import ( home, organogram, get_organogram,
                                 timeline, get_timeline, ProcessesView, MyProcessesView,
-                                view_profile, edit_profile, register )
+                                view_profile, edit_profile, register, get_user_info )
 from django.contrib.auth.views import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Processes, Timeline
@@ -16,7 +16,8 @@ urlpatterns = [
     url(r'^ajax/get_organogram/$', get_organogram, name='get_organogram'),
     url(r'^organogram/add/$', RedirectView.as_view(url='/fantamarconi/admin/fantamarconi/organogram/add/'), name='add-organogram'),
     # Timeline
-    url(r'^timeline/$', timeline, name='timeline'),
+    url(r'^timeline/', timeline, name='timeline'),
+    url(r'^timeline/(?P<referent>.+)/$', timeline, name='timeline'),
     url(r'^ajax/get_timeline/$', get_timeline, name='get_timeline'),
     url(r'^timeline/add/$', RedirectView.as_view(url='/fantamarconi/admin/fantamarconi/timeline/add/'), name='add-timeline'),
     # Processes
@@ -41,5 +42,6 @@ urlpatterns = [
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),
     url(r'^profile/$', view_profile, name='view-profile'),
     url(r'^profile/edit/$', edit_profile, name='edit-profile'),
-    url(r'^register/$', register, name='register')
+    url(r'^register/$', register, name='register'),
+    url(r'^ajax/get_user_info/$', get_user_info, name='get_user_info')
 ]
