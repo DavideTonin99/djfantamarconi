@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.views.generic import RedirectView, UpdateView
 from fantamarconi.views import ( home, organogram, get_organogram,
                                 timeline, get_timeline, ProcessesView, MyProcessesView,
-                                view_profile, edit_profile, register, get_user_info )
+                                view_profile, edit_profile, register, get_user_info, help_view )
 from django.contrib.auth.views import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Processes, Timeline
@@ -43,5 +43,6 @@ urlpatterns = [
     url(r'^profile/$', view_profile, name='view-profile'),
     url(r'^profile/edit/$', edit_profile, name='edit-profile'),
     url(r'^register/$', register, name='register'),
-    url(r'^ajax/get_user_info/$', get_user_info, name='get_user_info')
+    url(r'^ajax/get_user_info/$', get_user_info, name='get_user_info'),
+    url(r'^help/$', help_view, name='help')
 ]

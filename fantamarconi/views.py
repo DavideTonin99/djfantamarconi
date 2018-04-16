@@ -15,6 +15,10 @@ def home(request):
     return render(request, template_name='home.html')
 
 
+def help_view(request):
+    return render(request, template_name='help.html')
+
+
 class ProcessesView(TemplateView):
 
     model = Processes

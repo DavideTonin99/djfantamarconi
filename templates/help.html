@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Fantamarconi | HELP</title> {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h5>Modalità visualizzazione (non loggato)</h5>
+        <blockquote class="left-align">
+            <ul>
+                <li><b>Organigramma:</b> visualizzazione dell'organigramma</li>
+                <li><b>Macroprocesses:</b> visualizzazione di tutti i macroprocessi. Cliccare sul referente (in blu) per vedere la timeline dei vari processi controllati da quel referente.</li>
+                <li><b>Timeline:</b> visualizzazione delle timeline di tutti i processi. Selezionare un referente per vedere tutti i suoi processi.</li>
+            </ul>
+        </blockquote>
+        <hr>
+        <br>
+        <h5>Login come utente normale</h5>
+        <blockquote class="left-align">
+            <ul>
+                <li><b>Organigramma:</b> visualizzazione dell'organigramma</li>
+                <li><b>Macroprocesses:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li>Visualizzazione di tutti i macroprocessi.</li>
+                        <li>Cliccare sul nome del macroprocesso (in arancio) per vedere modificare il macroprocesso.</li>
+                        <li>Cliccare sul referente (in blu) per vedere la timeline dei vari processi controllati da quel referente.</li>
+                    </ul>
+                <li><b>I miei processi:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li>Visualizzazione di tutti i macroprocessi e dei sottoprocessi</li>
+                        <li>Cliccare sul nome del macroprocesso (in arancio) nella tabella dei macroprocessi o dei sottoprocessi per modificare: un utente può modificare soltanto i suoi processi</li>
+                        <li>Cliccare sul referente (in blu) per vedere la timeline dei vari processi controllati da lui</li>
+                    </ul>
+                    <li><b>Account:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li><b>Profilo: </b>visualizzazione del profilo</li>
+                        <li><b>Modifica profilo: </b>è possibile modificare il proprio profilo</li>
+                    </ul>
+                <li><b>Timeline:</b> Visualizzazione delle timeline di tutti i processi. Selezionare un referente per vedere tutti i suoi processi.</li>
+            </ul>
+        </blockquote>
+        <hr>
+        <br>
+        <h5>Login come utente amministratore</h5>
+        <blockquote class="left-align">
+            <ul>
+                <li><b>Organigramma:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li>Visualizzazione dell'organigramma.</li>
+                        <li>Inserimento di un nuovo elemento nell'organigramma</li>
+                    </ul>
+                    
+                <li><b>Macroprocesses:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li>Visualizzazione di tutti i macroprocessi.</li>
+                        <li>Cliccare sul nome del macroprocesso (in arancio) per vedere modificare il macroprocesso</li>
+                        <li>Cliccare sul referente (in blu) per vedere la timeline dei vari processi controllati da quel referente</li>
+                        <li>Cliccare sul aggiungi macro processo per aggiungere un nuovo elemento</li>
+                    </ul>
+                    <li><b>I miei processi:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li>Visualizzazione di tutti i macroprocessi e dei sottoprocessi</li>
+                        <li>Cliccare sul nome del macroprocesso (in arancio) nella tabella dei macroprocessi o dei sottoprocessi per modificare</li>
+                        <li>Cliccare sul referente (in blu) per vedere la timeline dei vari processi controllati da lui</li>
+                        <li>Cliccare sul aggiungi macro processo per aggiungere un nuovo elemento</li>
+                        <li>Cliccare sul aggiungi processo per aggiungere un nuovo elemento</li>
+                    </ul>
+                    <li><b>Account:</b></li>
+                    <ul style="margin-left: 40px;">
+                        <li><b>Admin: </b>reindirizza alla pagina di admin</li>
+                        <li><b>Profilo: </b>visualizzazione del profilo</li>
+                        <li><b>Modifica profilo: </b>è possibile modificare il proprio profilo</li>
+                        <li><b>Registra: </b>registra un nuovo utente</li>
+                    </ul>
+                <li><b>Timeline:</b> Visualizzazione delle timeline di tutti i processi. Selezionare un referente per vedere tutti i suoi processi</li>
+            </ul>
+        </blockquote>
+    </div>
+{% endblock %}
