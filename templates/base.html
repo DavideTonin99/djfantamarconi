@@ -30,8 +30,7 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'organogram' %}">Organigramma</a></li>
-                        <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
-                        <li><a href="{% url 'timeline' %}">Timeline</a></li>
+                        <li><a href="{% url 'processes' %}">MacroProcessi</a></li>                        
 
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
@@ -56,7 +55,6 @@
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'organogram' %}">Organigramma</a></li>
                         <li><a href="{% url 'processes' %}">MacroProcessi</a></li>
-                        <li><a href="{% url 'timeline' %}">Timeline</a></li>
 
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'myprocesses' %}">I miei processi</a></li>
@@ -107,6 +105,7 @@
                     <abbr title="Fax">Fax:</abbr> +39 045 573497<br>
                     <abbr title="Website">Site:</abbr> <a href="http://www.marconiverona.gov.it/" target="blank">marconiverona.gov.it</a>
                 </address>
+                <h6 class="center-align"><a href="/">Tutti i servizi</a></h6>
               </div>
             </div>
           </div>
