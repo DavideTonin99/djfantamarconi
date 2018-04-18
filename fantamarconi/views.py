@@ -109,7 +109,13 @@ def get_organogram(request):
 
 # timeline page
 def timeline(request):
-    return render(request, template_name='timeline.html')
+    users = User.objects.all()
+    response = []
+    for user in users:
+        if (user.first_name != "" or user.last_name != ""):
+            response.append({'name': user.first_name, 'surname': user.last_name})
+    args = {'users': response}
+    return render(request, template_name='timeline.html', context={'users':response})
 
 # return timeline data
 def get_timeline(request):

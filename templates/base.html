@@ -14,12 +14,17 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
         {% block style %}{% endblock %}
+        <style>
+            .nav-wrapper a {
+                color: black !important;
+            }
+        </style>
     </head>
     <body class="grey darken-4">
         <div class="navbar-fixed">
             <nav class="grey darken-4">
-                <div class="nav-wrapper">
-                    <a href="{% url 'home' %}" class="brand-logo left" style="margin-left: 50px;">FANTAMARCONI</a>
+                <div class="nav-wrapper" style="background-color: #eee">
+                    <a href="{% url 'home' %}" class="brand-logo left" style="margin-left: 50px;"><img style="height: 60px" src="{% static 'img/LogoFM.png' %}" alt=""></a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{% url 'home' %}">Home</a></li>

@@ -13,27 +13,19 @@
 
         <form method="get">
             <div class="row">
-                <div class="col s8 offset-s2">
-                    {{ form.username.errors }}
-                    <div class="input-field col s12">
-                        <label for="id_username">Nome</label>
-                        <input id="name-referent-input" type="text" value=""/>
-                    </div>
-                </div>
+                <div class="input-field col s8 offset-s2">
+                    <select onchange="select_referent()">
+                        <option value="" disabled selected>Scegli un referente</option>
+                        {% for user in users %}
+                        <option value="{{ user.name}}_{{ user.surname }}">{{ user.name }} {{ user.surname }}</option>
+                        {% endfor %}                      
+                    </select>
+                    <label>Referente</label>
+                  </div>
+    
             </div>
-            <div class="row">
-                <div class="col s8 offset-s2">
-                    {{ form.username.errors }}
-                    <div class="input-field col s12">
-                        <label for="id_username">Cognome</label>
-                        <input id="surname-referent-input" type="text" value=""/>
-                    </div>
-                </div>
-            </div>
-
-            <br  />
-            <button class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 blue darken-3" type="button" onclick='select_referent()'>SELEZIONA</button><br><br>
-            <a class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 amber darken-1" href="{% url 'timeline' %}">VEDI TUTTI</a>
+            
+            <a class="btn waves-effect waves-light col s10 m10 l4 offset-s1 offset-m1 offset-l4 orange darken-3" href="{% url 'timeline' %}">VEDI TUTTI</a>
         </form>
 
         <br />
@@ -58,9 +50,16 @@
         var timeline_data;
 
         function load_data() {
-            first_name = $('#name-referent-input').val();
-            last_name = $('#surname-referent-input').val();
+            first_name = "";
+            last_name = "";
+            try {
+                referent = $('select').val().split('_');
+                first_name = referent[0];
+                last_name = referent[1];
+            } catch (err) {
 
+            }
+            
             person_selected = first_name
 
             if (last_name !== "" ) {
@@ -91,6 +90,7 @@
         }
 
         $(document).ready( function() {
+            $('select').material_select();
             $('.tooltipped').tooltip({delay: 50}); // for toast
 
             var url = window.location.href;
@@ -111,8 +111,8 @@
                         load_data();
                     } else {
                         $('label').addClass('active');
-                        $('#name-referent-input').val(data.name);
-                        $('#surname-referent-input').val(data.surname);
+                        $("select option[value='"+data.name+"_"+data.surname+"']").attr('selected', 'selected');
+                        $('select').material_select();                      
                         load_data();
                     }
                 })
