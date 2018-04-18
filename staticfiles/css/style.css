@@ -69,7 +69,7 @@ td, th {
 }
 
 .role {
-    color: red;
+    color: darkorange;
     padding: 7px !important;
 }
 
@@ -130,4 +130,20 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 address {
     font-style: normal;
+}
+
+.google-visualization-orgchart-node {
+    font-family: sans-serif !important;
+    background: #eee !important;
+    border: 2px solid #ccc !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+}
+
+.google-visualization-orgchart-nodesel {
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px !important;
+}
+
+.google-visualization-orgchart-node:hover {
+    cursor: pointer;
 }
