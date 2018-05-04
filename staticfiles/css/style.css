@@ -34,7 +34,7 @@ nav > .navbar-toggler {
 #content-container {
     padding-top: 1px;
     min-height: 75vh;
-    background: white;
+    background: #eceff1;
     text-align:center;
 }
 

@@ -26,8 +26,8 @@
                         <td class="align-middle">{{ row.process.name }}</a></td>
                         {% endif %}
 
-                        <td class="align-middle"><a href="{{ row.process.get_timeline_by_referent }}" style="color: #1565c0 !important">{{ row.referent_name }} {{ row.referent_surname }}</a></td>
-                        <td class="align-middle">{{ row.referent_email }}</td>
+                        <td class="align-middle"><a href="{{ row.process.get_timeline_by_referent }}" style="color: #cc6600 !important">{{ row.referent_name }} {{ row.referent_surname }}</a></td>
+                        <td class="align-middle"><a href="mailto:{{ row.referent_email }}?Subject=Hello%20again" target="_top" style="color: #ff3300 !important">{{ row.referent_email }} </a></td>
                         <td class="align-middle">{{ row.process.start_date }}</td>
                         <td class="align-middle">{{ row.process.end_date }}</td>
                     </tr>
@@ -78,13 +78,5 @@
 
         {% endif %}
         <br />
-        {% if user.is_authenticated and user.is_superuser %}
-            <br />
-            <div class='row' id='add-process'>
-                <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 grey darken-4' href='{% url 'add-timeline' %}' target="_blank">+ AGGIUNGI PROCESSO</a>
-            </div>
-        {% endif %}
     {% endif %}
-
-
 {% endblock %}
