@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^myprocesses/$', login_required(MyProcessesView.as_view()), name='myprocesses'),
     url(r'^myprocesses/(?P<pk>\d+)/$', login_required(UpdateView.as_view(
         model = Processes,
-        fields = ['name','start_date', 'end_date','referent'],
+        fields = ['name','start_date', 'end_date','referent', 'technical_referent'],
         template_name = 'single_process.html',
         #redirect = 'MyProcessesView'
     )) , name="modify-macroprocess"),

@@ -6,15 +6,16 @@
     {% if macro_processes_error != null %}
         <div class='row' id='message-row'><h4 class='col s12 text-center' style="color: red;">{{ macro_processes_error }}</h4></div>
     {% else %}
+    <h4>Macro Processi</h4>
     <div class="table-container">
-        <h4>Macro Processi</h4>
         <br>
         <table id='macroprocesses-table' class='highlight centered responsive-table'>
             <thead>
                 <tr class="grey darken-4 white-text">
                     <th>NOME</th>
-                    <th>REFERENTE</th>
+                    <th>RESPONSABILE</th>
                     <th>EMAIL</th>
+                    <th>RESPONSABILE TECNICO</th>
                     <th>DATA INIZIO</th>
                     <th>DATA FINE</th>
                 </tr>
@@ -30,6 +31,11 @@
 
                         <td class="align-middle"><a href="{{ row.process.get_timeline_by_referent }}" style="color: #ff6a00 !important"><u>{{ row.referent_name }} {{ row.referent_surname }}</u></a></td>
                         <td class="align-middle"><a href="mailto:{{ row.referent_email }}" target="_top" style="color: #ff6a00 !important"><u>{{ row.referent_email }}</u></a></td>
+                        {% if row.process.technical_referent == None %}
+                            <td class="align-middle"></a></td>
+                        {% else %}
+                            <td class="align-middle">{{ row.process.technical_referent }}</a></td>
+                        {% endif %}
                         <td class="align-middle">{{ row.process.start_date }}</td>
                         <td class="align-middle">{{ row.process.end_date }}</td>
                     </tr>
@@ -44,8 +50,6 @@
         <!-- <div class='row' id='add-process'> -->
         <div class='row'>
             <a class="btn-floating btn-large waves-effect waves-light orange lighten-2" href='{% url 'add-process' %}' target='_blank'><i class="material-icons">add</i></a>
-        <a class='waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 grey darken-4' href='{% url 'add-timeline' %}' target="_blank">+ AGGIUNGI TIMELINE</a>
-            
         </div>
     {% endif %}
     {% if page == "myprocesses" %}
@@ -54,14 +58,13 @@
         {% if timeline_processes_error != null %}
             <div class='row' id='message-row'><h4 class='col s12 text-center blue-text text-darken-4'>{{ timeline_processes_error }}</h4></div>
         {% else %}
-        <div class="table-container">
         <h4>Micro Processi</h4>
-            
+        <div class="table-container">            
             <table id='processes-table' class='highlight centered responsive-table'>
                 <thead>
                     <tr class="grey darken-4 white-text">
                         <th>MACRO PROCESSO</th>
-                        <th>REFERENTE</th>
+                        <th>RESPONSABILE</th>
                         <th>EMAIL</th>
                         <th>COMPITO</th>
                         <th>DATA INIZIO</th>

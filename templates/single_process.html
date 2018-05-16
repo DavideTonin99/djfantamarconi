@@ -50,6 +50,15 @@
                   </div>
               </div>
             </div>
+            <div class="row">
+                <div class="col s12">
+                    {{ form.technical_referent.errors }}
+                    <div class="input-field col s12">
+                        <label>Referente tecnico</label>
+                        {{ form.technical_referent }}
+                    </div>
+                </div>
+              </div>
             <br />
             <a class="btn-floating btn-large waves-effect waves-light orange lighten-2" onclick="document.forms[0].submit();"><i class="material-icons">mode_edit</i></a>
         </form>

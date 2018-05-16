@@ -56,7 +56,8 @@ class ProcessesView(TemplateView):
             context['processes'] = [({'process':process,
                                     'referent_name': process.referent.first_name,
                                     'referent_surname': process.referent.last_name,
-                                    'referent_email': process.referent.email})
+                                    'referent_email': process.referent.email,
+                                    'technical_referent': process.technical_referent})
                                     for process in processes]
         else:
             context['macro_processes_error'] = 'Nessun risultato trovato'
@@ -83,7 +84,8 @@ class MyProcessesView(TemplateView):
             context['processes'] = [({'process':process,
                                     'referent_name': process.referent.first_name,
                                     'referent_surname': process.referent.last_name,
-                                    'referent_email': process.referent.email})
+                                    'referent_email': process.referent.email,
+                                    'technical_referent': process.technical_referent})
                                     for process in macro_processes]
         else:
             context['macro_processes_error'] = 'Nessun Macro Processo trovato'

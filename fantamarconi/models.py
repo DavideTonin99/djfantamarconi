@@ -12,6 +12,7 @@ class Processes(models.Model):
     start_date = models.DateField(auto_now=False, null=True, blank=True)
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     referent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    technical_referent = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return str(self.name)
