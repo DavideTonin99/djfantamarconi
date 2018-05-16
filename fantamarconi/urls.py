@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from django.views.generic import RedirectView, UpdateView
-from fantamarconi.views import ( home, organogram, get_organogram,
-                                timeline, get_timeline, ProcessesView, MyProcessesView,
-                                view_profile, edit_profile, register, get_user_info, help_view )
+from fantamarconi.views import ( 
+    home, organogram, get_organogram, timeline, get_timeline, ProcessesView, MyProcessesView,
+    view_profile, edit_profile, register, get_user_info, help_view, change_password
+)
 from django.contrib.auth.views import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Processes, Timeline
@@ -10,6 +11,7 @@ from .models import Processes, Timeline
 # app_name = 'fantamarconi'
 
 urlpatterns = [
+    url(r'^profile/password/$', change_password, name='change_password'),
     url(r'^$', home, name='home'),
     # Organogram
     url(r'^organogram/$', organogram, name='organogram'),
