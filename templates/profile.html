@@ -11,26 +11,26 @@
     {% endif %}
     {% if user.is_authenticated %}
     <div class="row">
-        <h2 class="col s12">IL MIO PROFILO:</h2>
+        <h3 class="col s12">Il mio profilo:</h3>
     </div>
     <div class="row">
         <table class='bordered centered striped responsive-table'>
             <tbody>
                 <tr>
                     <td>NOME</td>
-                    <td>{{ user.first_name }}</td>
+                    <td class='profile-table'>{{ user.first_name }}</td>
                 </tr>
                 <tr>
                     <td>COGNOME</td>
-                    <td>{{ user.last_name }}</td>
+                    <td class='profile-table'>{{ user.last_name }}</td>
                 </tr>
                 <tr>
                     <td>EMAIL</td>
-                    <td>{{ user.email }}</td>
+                    <td class='profile-table'>{{ user.email }}</td>
                 </tr>
                 <tr>
                     <td>USERNAME</td>
-                    <td>{{ user.username }}</td>
+                    <td class='profile-table'>{{ user.username }}</td>
                 </tr>
             </tbody>
         </table>

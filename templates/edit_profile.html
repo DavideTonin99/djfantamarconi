@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} <title>Fantamarconi | MODIDFICA PROFILO</title> {% endblock %}
+{% block title %} <title>Fantamarconi | MODIFICA PROFILO</title> {% endblock %}
 
 {% block content %}
     {% if not user.is_authenticated %}
@@ -11,51 +11,18 @@
 
     {% if user.is_authenticated %}
     <div class="row">
-        <h2 class="col-md-12 text-center">MODIFICA PROFILO</h2>
+        <h3 class="col-md-12 text-center">Modifica Profilo</h3>
     </div>
-
-    <div class="row">
-        <div class='justify-content-md-center col-sm-10 offset-sm-1'>
-            <form class="col s12" method="post">
-                {% csrf_token %}
-                <div class="row">
-                  <div class="col s12">
-                      {{ form.first_name.errors }}
-                      <div class="input-field col s12">
-                          <label>Nome</label>
-                          {{ form.first_name }}
-                      </div>
-                  </div>
-                </div>
-                <br />
-                <div class="row">
-                  <div class="col s12">
-                    {{ form.last_name.errors }}
-                    <div class="input-field col s12">
-                        <label>Cognome</label>
-                        {{ form.last_name }}
-                    </div>
-                 </div>
-                </div>
-                <br />
-                <div class="row">
-                  <div class="col s12">
-                    {{ form.email.errors }}
-                    <div class="input-field col s12">
-                        <label>Email</label>
-                        {{ form.email }}
-                    </div>
-                  </div>
-                </div>
-                <!--<br />
-                <div class="col-sm-12">
-                    Puoi modificare la password usando questo <a href='#'>form</a>.
-                </div>-->
-                <br />
-                <button class="waves-effect waves-light btn-large col s10 m10 l4 offset-s1 offset-m1 offset-l4 orange" type="submit">MODIFICA</button>
-            </form>
-        </div>
-    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <a class="btn-floating btn-large waves-effect waves-light orange lighten-2" onclick="document.forms[0].submit();"><i class="material-icons">mode_edit</i></a>            
+        <br>
+        <br>
+        <br>
+    </form>  
     {% endif %}
 {% endblock %}
 

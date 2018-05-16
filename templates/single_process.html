@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="row">
-    <h2 class="col-md-12 text-center">Modifica macro processo: {{ object.name }}</h2>
+    <h3 class="col-md-12 text-center">Modifica macro processo: {{ object.name }}</h3>
 </div>
 <div class="row">
     <div class='justify-content-md-center col-sm-10 offset-sm-1'>
@@ -51,7 +51,7 @@
               </div>
             </div>
             <br />
-            <button class="waves-effect waves-light btn-large col s4 offset-s4 orange" type="submit">MODIFICA</button>
+            <a class="btn-floating btn-large waves-effect waves-light orange lighten-2" onclick="document.forms[0].submit();"><i class="material-icons">mode_edit</i></a>
         </form>
     </div>
 </div>
