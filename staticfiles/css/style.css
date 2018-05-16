@@ -5,9 +5,23 @@ html, body{
     font-family: sans-serif;
 }
 
+#id_password {
+    display: none;
+}
+
+.profile-table{
+    color: #ff6a00;
+}
+
+.dropdown-content.select-dropdown {
+    max-height:200px !important;
+    z-index: 100 !important;
+}
+
 header {
     height: 100px;
     color: white;
+    z-index: 999 !important;
 }
 
 nav > .navbar-toggler {
@@ -34,7 +48,7 @@ nav > .navbar-toggler {
 #content-container {
     padding-top: 1px;
     min-height: 75vh;
-    background: #eceff1;
+    background: white;
     text-align:center;
 }
 
